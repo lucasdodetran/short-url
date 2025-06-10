@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Painel Admin{% endblock %}
+
+{% block head %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+  <h2>Painel de Links Encurtados</h2>
+  <table border="1" cellpadding="6" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Link</th>
+        <th>URL</th>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Cliques</th>
+        <th>Criado em</th>
+        <th>Último acesso</th>
+        <th>Analytics</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for codigo, dados in links.items() %}
+      <tr>
+        <td><a href="/{{ codigo }}" target="_blank">/{{ codigo }}</a></td>
+        <td>{{ dados.url }}</td>
+        <td>{{ dados.titulo }}</td>
+        <td>{{ dados.descricao }}</td>
+        <td>{{ dados.cliques }}</td>
+        <td>{{ dados.criado_em or '-' }}</td>
+        <td>{{ dados.ultimo_acesso or '-' }}</td>
+        <td><a href="/analytics/{{ codigo }}">Ver gráfico</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3>Gráfico de Cliques por Link</h3>
+  <canvas id="grafico"></canvas>
+  <script>
+    const ctx = document.getElementById('grafico').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: {{ codigos|tojson }},
+        datasets: [{
+          label: 'Número de cliques',
+          data: {{ cliques|tojson }},
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            precision: 0
+          }
+        }
+      }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Analytics - {{ codigo }}{% endblock %}
+
+{% block head %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+  <h2>Analytics para /{{ codigo }}</h2>
+  <p><strong>URL original:</strong> <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+  {% if datas %}
+    <canvas id="grafico"></canvas>
+    <script>
+      const ctx = document.getElementById('grafico').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: {{ datas|tojson }},
+          datasets: [{
+            label: 'Cliques ao longo do tempo',
+            data: Array({{ datas|length }}).fill(1),
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0.3,
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              precision: 0
+            }
+          }
+        }
+      });
+    </script>
+  {% else %}
+    <p>Nenhum clique registrado ainda.</p>
+  {% endif %}
+  <p><a href="/admin">← Voltar ao painel</a></p>
+{% endblock %}
