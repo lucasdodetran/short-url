@@ -1,13 +1,165 @@
 {% extends "base.html" %}
-{% block title %}Página Inicial - Encurtador{% endblock %}
+{% block title %}Encurtador de Links{% endblock %}
+
+{% block head %}
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #f0f4ff, #e8f0ff);
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #00a896;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .form-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .form-card h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .form-card p {
+      font-size: 0.95rem;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #00c9ff, #0072ff);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #0072ff, #0059b3);
+    }
+
+    .footer-links {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+{% endblock %}
 
 {% block content %}
-  <h2>Encurte seu Link</h2>
-  <form action="/encurtar" method="post">
-    <p><input type="text" name="url" placeholder="URL" required style="width:100%; padding:10px;"></p>
-    <p><input type="text" name="titulo" placeholder="Título (opcional)" style="width:100%; padding:10px;"></p>
-    <p><input type="text" name="descricao" placeholder="Descrição (opcional)" style="width:100%; padding:10px;"></p>
-    <p><button type="submit" style="padding:10px 20px;">Encurtar</button></p>
-  </form>
-  <p><a href="/admin">Ver todos os links</a> | <a href="/logout">Sair</a></p>
+  <div class="hero">
+    <h1>Encurte. Compartilhe. <span>Analise.</span></h1>
+    <p>Transforme URLs longas em links elegantes e rastreáveis. Gratuito, rápido e sem limites.</p>
+    <div class="features">
+      <div>⚡ Instantâneo</div>
+      <div>🔒 Seguro</div>
+      <div>📊 Analytics</div>
+      <div>📱 QR Code</div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h2>Encurte seu Link</h2>
+    <p>Transforme URLs longas em links elegantes e compartilháveis</p>
+    <form action="/encurtar" method="post">
+      <div class="form-group">
+        <label for="url">URL para Encurtar *</label>
+        <input type="text" name="url" id="url" placeholder="https://exemplo.com/sua-url-muito-longa" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="titulo">Título (opcional)</label>
+          <input type="text" name="titulo" id="titulo" placeholder="Meu link incrível">
+        </div>
+        <div class="form-group">
+          <label for="descricao">Descrição (opcional)</label>
+          <input type="text" name="descricao" id="descricao" placeholder="Descrição do que é este link...">
+        </div>
+      </div>
+      <button type="submit">✨ Encurtar Agora</button>
+    </form>
+  </div>
+
+  <div class="footer-links">
+    <a href="/admin">Ver todos os links</a> |
+    <a href="/logout">Sair</a>
+  </div>
 {% endblock %}
