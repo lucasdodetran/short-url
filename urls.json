@@ -2,6 +2,59 @@
     "NueNYT": {
         "url": "https://www.google.com/",
         "titulo": "oie",
-        "descricao": "oie"
+        "descricao": "oie",
+        "cliques": 1,
+        "ultimo_acesso": "2025-06-10T21:08:52.306159",
+        "acessos": [
+            {
+                "data": "2025-06-10T21:08:52.306159",
+                "ip": "177.95.165.160",
+                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+            }
+        ]
+    },
+    "bbtl57": {
+        "url": "https://getemoji.com/",
+        "titulo": "",
+        "descricao": "",
+        "cliques": 2,
+        "criado_em": "2025-06-10T21:08:31.422628",
+        "acessos": [
+            {
+                "data": "2025-06-10T21:08:34.509251",
+                "ip": "177.95.165.160",
+                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+            },
+            {
+                "data": "2025-06-10T21:08:49.556728",
+                "ip": "177.95.165.160",
+                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+            }
+        ],
+        "ultimo_acesso": "2025-06-10T21:08:49.556728"
+    },
+    "5dJcPr": {
+        "url": "https://www.globo.com/",
+        "titulo": "",
+        "descricao": "",
+        "cliques": 0,
+        "criado_em": "2025-06-10T21:27:42.993761",
+        "acessos": []
+    },
+    "yrPKIy": {
+        "url": "https://www.globo.com/",
+        "titulo": "",
+        "descricao": "",
+        "cliques": 0,
+        "criado_em": "2025-06-10T21:28:58.314115",
+        "acessos": []
+    },
+    "oFvo4L": {
+        "url": "https://www.globo.com/",
+        "titulo": "",
+        "descricao": "",
+        "cliques": 0,
+        "criado_em": "2025-06-10T21:32:31.110340",
+        "acessos": []
     }
 }

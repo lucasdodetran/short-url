@@ -70,14 +70,11 @@ def encurtar():
     with open(ARQUIVO, "w") as f:
         json.dump(links, f, indent=4)
 
-    return f"""
-        <h2>Link encurtado:</h2>
-        <p><a href="/{codigo}">http://localhost:5000/{codigo}</a></p>
-        <p><strong>Título:</strong> {titulo}</p>
-        <p><strong>Descrição:</strong> {descricao}</p>
-        <p><strong>Cliques:</strong> 0</p>
-        <p><a href="/">Voltar</a> | <a href="/logout">Sair</a></p>
-    """
+    # Link encurtado e QR code
+    link_encurtado = f"http://localhost:5000/{codigo}"  # Mude para seu domínio no deploy
+    qr_code_url = f"https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl={link_encurtado}"
+
+    return render_template("resultado.html", link=link_encurtado, qr_code_url=qr_code_url, titulo=titulo, descricao=descricao)
 
 @app.route('/<codigo>')
 def redirecionar(codigo):
@@ -126,6 +123,7 @@ def analytics(codigo):
 
     return render_template("analytics.html", codigo=codigo, url=info.get("url", ""), datas=datas)
 
+# Execução local ou na nuvem (Render, Replit etc.)
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

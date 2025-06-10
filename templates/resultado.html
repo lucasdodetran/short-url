@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Link Encurtado{% endblock %}
+
+{% block content %}
+  <h2>Seu link foi encurtado com sucesso!</h2>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <p><strong>Link encurtado:</strong></p>
+    <input id="shortLink" value="{{ link }}" readonly style="width: 80%; padding: 10px; font-size: 1rem;">
+    <br><br>
+    <button onclick="copiarLink()" style="padding: 10px 20px;">📋 Copiar</button>
+  </div>
+
+  <div style="margin-top: 30px; text-align: center;">
+    <p><strong>QR Code:</strong></p>
+    <img id="qrCodeImg" src="{{ qr_code_url }}" alt="QR Code do link" width="180" height="180" style="border: 1px solid #ccc; border-radius: 8px;">
+    <br><br>
+    <a href="{{ qr_code_url }}" download="qrcode.png">
+      <button style="padding: 10px 20px;">⬇️ Baixar QR Code</button>
+    </a>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <p><strong>Título:</strong> {{ titulo }}</p>
+    <p><strong>Descrição:</strong> {{ descricao }}</p>
+    <p><strong>Cliques:</strong> 0</p>
+  </div>
+
+  <p style="margin-top: 20px;">
+    <a href="/">Voltar</a> | <a href="/logout">Sair</a>
+  </p>
+
+  <script>
+    function copiarLink() {
+      const input = document.getElementById("shortLink");
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Link copiado para a área de transferência!");
+    }
+  </script>
+{% endblock %}
