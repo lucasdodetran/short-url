@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Encurtador de Links</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #eef2f3, #dbe9f4);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    header h1 span {
+      color: #0077b6;
+    }
+
+    header p {
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: #fff;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #0072ff, #0056b3);
+    }
+
+    .logout {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Encurte. Compartilhe. <span>Analise.</span></h1>
+    <p>Transforme URLs longas em links elegantes e rastreáveis.</p>
+    <div class="features">
+      <div>⚡ Instantâneo</div>
+      <div>🔒 Seguro</div>
+      <div>📊 Analytics</div>
+      <div>📱 QR Code</div>
+    </div>
+  </header>
+
+  <div class="card">
+    <h2>Encurte seu Link</h2>
+    <form action="/encurtar" method="post">
+      <div class="form-group">
+        <label for="url">🔗 URL para Encurtar *</label>
+        <input type="text" name="url" id="url" placeholder="https://exemplo.com/sua-url" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="titulo">📌 Título (opcional)</label>
+          <input type="text" name="titulo" id="titulo" placeholder="Meu link incrível">
+        </div>
+        <div class="form-group">
+          <label for="descricao">📝 Descrição (opcional)</label>
+          <input type="text" name="descricao" id="descricao" placeholder="Descrição do link...">
+        </div>
+      </div>
+      <button type="submit">✨ Encurtar Agora</button>
+    </form>
+    <div class="logout">
+      <a href="/logout">Sair da conta</a>
+    </div>
+  </div>
+</body>
+</html>
